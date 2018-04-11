@@ -1,12 +1,12 @@
 //
-// Created by shosh on 4/9/18.
+// Created by shlomiw on 4/9/18.
 //
 
 #include "Member.h"
 
 int Member::counter=0;
 Member::Member(){
-//    std::set<Member*> myfollower;
+//    std::set<Member*> myfollower; //no need  
 //    std::set<Member*> ifollowing;
     counter++;
 }
@@ -28,7 +28,9 @@ void Member::unfollow(Member &x){
 //int Member::count(){
 //    return counter;
 //}
-// Member::~Member(){}
+// i used this code for the destroctor func, (and also in the h file)
+//https://github.com/erelsgl/infinite/commit/e06f26229ea0531b7841f54d388ae4c0bf510d04#diff-5416366bb95630880f3031cf69839b3c
+
 Member::~Member(){
     counter--;
 		for (Member* x: ifollowing) {
@@ -36,8 +38,5 @@ Member::~Member(){
 		}
 		for (Member* x: myfollower) {
 			x->unfollow(*this);
-		}
-		
-	
-    
+		}    
  }
