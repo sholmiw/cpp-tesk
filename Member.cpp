@@ -11,6 +11,7 @@ Member::Member(){
     counter++;
 }
 void Member::follow (Member &x){
+    if (this==&x) return;
     ifollowing.insert(&x);
     x.myfollower.insert(this);
 }
