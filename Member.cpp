@@ -30,11 +30,13 @@ void Member::unfollow(Member &x){
 // Member::~Member(){}
 Member::~Member(){
     counter--;
-//     set<Member*>::iterator it;
-//     for(it =myfollower.begin();it !=myfollower.end();it++){
-//         (*it)->myfollower.erase(this);
-//     }
-//     for(it=ifollowing.begin();it !=ifollowing.end();it++){
-//         (*it)->ifollowing.erase(this);
-//     }
+		for (Member* x: ifollowing) {
+			this->unfollow(*x);
+		}
+		for (Member* x: myfollower) {
+			x->unfollow(*this);
+		}
+		
+	
+    
  }
